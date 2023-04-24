@@ -1,9 +1,18 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import { formatPrice, pluralize, isNewShoe } from '../../utils';
-import Spacer from '../Spacer';
+import { COLORS, WEIGHTS } from "../../constants";
+import { formatPrice, isNewShoe, pluralize } from "../../utils";
+import Spacer from "../Spacer";
+
+interface ShoeCardProps {
+  slug: string;
+  name: string;
+  imageSrc: string;
+  price: number;
+  salePrice?: number | null;
+  releaseDate: number | Date;
+  numOfColors: number;
+}
 
 const ShoeCard = ({
   slug,
@@ -13,7 +22,7 @@ const ShoeCard = ({
   salePrice,
   releaseDate,
   numOfColors,
-}) => {
+}: ShoeCardProps) => {
   // There are 3 variants possible, based on the props:
   //   - new-release
   //   - on-sale
@@ -43,7 +52,7 @@ const ShoeCard = ({
           <Price>{formatPrice(price)}</Price>
         </Row>
         <Row>
-          <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
+          <ColorInfo>{pluralize("Color", numOfColors)}</ColorInfo>
         </Row>
       </Wrapper>
     </Link>

@@ -1,11 +1,10 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
-import { COLORS } from '../../constants';
-import VisuallyHidden from '../VisuallyHidden';
-import Icon from '../Icon';
+import { COLORS } from "../../constants";
+import Icon from "../Icon";
+import VisuallyHidden from "../VisuallyHidden";
 
-const SearchInput = ({ label, ...delegated }) => {
+const SearchInput = ({ ...delegated }) => {
   return (
     <Label>
       <VisuallyHidden>Search</VisuallyHidden>

@@ -1,7 +1,11 @@
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
-export default styled.button`
-  display: ${(props) => props.display || 'block'};
+interface UnstyledButtonProps {
+  display?: "block" | "inline-block";
+}
+
+export default styled.button<UnstyledButtonProps>`
+  display: ${(props) => props.display || "block"};
   margin: 0;
   padding: 0;
   border: none;

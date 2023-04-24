@@ -1,16 +1,21 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import { ChangeEvent, Children, ReactElement } from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Icon from '../Icon';
+import { COLORS, WEIGHTS } from "../../constants";
+import Icon from "../Icon";
 
-const Select = ({ label, value, children, ...delegated }) => {
-  const childArray = React.Children.toArray(children);
-  const selectedChild = childArray.find(
-    (child) => child.props.value === value
-  );
+interface SelectProps {
+  label: string;
+  children: ReactElement | ReactElement[];
+  value: string;
+  onChange: (ev: ChangeEvent<HTMLSelectElement>) => void;
+}
 
-  const displayedValue = selectedChild.props.children;
+const Select = ({ label, value, children, ...delegated }: SelectProps) => {
+  const childArray = Children.toArray(children) as ReactElement[];
+  const selectedChild = childArray.find((child) => child.props.value === value);
+
+  const displayedValue = selectedChild?.props.children;
 
   return (
     <Wrapper>
@@ -21,11 +26,7 @@ const Select = ({ label, value, children, ...delegated }) => {
 
         <DisplayedBit>
           {displayedValue}
-          <ChevronIcon
-            id="chevron-down"
-            size={24}
-            strokeWidth={1.5}
-          />
+          <ChevronIcon id="chevron-down" size={24} strokeWidth={1.5} />
         </DisplayedBit>
       </SelectWrapper>
     </Wrapper>
