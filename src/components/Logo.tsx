@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-import { WEIGHTS } from "../../constants";
+import { WEIGHTS } from "../constants";
 
 const Logo = ({ ...props }) => {
   return (

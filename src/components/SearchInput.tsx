@@ -1,8 +1,8 @@
 import styled from "styled-components/macro";
 
-import { COLORS } from "../../constants";
-import Icon from "../Icon";
-import VisuallyHidden from "../VisuallyHidden";
+import { COLORS } from "../constants";
+import Icon from "./Icon";
+import VisuallyHidden from "./VisuallyHidden";
 
 const SearchInput = ({ ...delegated }) => {
   return (

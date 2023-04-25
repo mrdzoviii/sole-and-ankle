@@ -1,8 +1,8 @@
 import { ChangeEvent, Children, ReactElement } from "react";
 import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from "../../constants";
-import Icon from "../Icon";
+import { COLORS, WEIGHTS } from "../constants";
+import Icon from "./Icon";
 
 interface SelectProps {
   label: string;

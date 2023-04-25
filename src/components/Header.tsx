@@ -1,8 +1,8 @@
 import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from "../../constants";
-import Logo from "../Logo";
-import SuperHeader from "../SuperHeader";
+import { COLORS, WEIGHTS } from "../constants";
+import Logo from "./Logo";
+import SuperHeader from "./SuperHeader";
 
 const Header = () => {
   // Our site features two visual headers, but they should be

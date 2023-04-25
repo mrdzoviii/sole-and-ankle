@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-import { COLORS } from "../../constants";
+import { COLORS } from "../constants";
 
 interface BreadcrumbsProps {
   children: React.ReactNode;

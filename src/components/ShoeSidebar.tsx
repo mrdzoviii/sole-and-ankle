@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from "../../constants";
+import { COLORS, WEIGHTS } from "../constants";
 
 const Sidebar = () => {
   return (

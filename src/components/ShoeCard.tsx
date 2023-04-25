@@ -1,8 +1,8 @@
 import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from "../../constants";
-import { formatPrice, isNewShoe, pluralize } from "../../utils";
-import Spacer from "../Spacer";
+import { COLORS, WEIGHTS } from "../constants";
+import { formatPrice, isNewShoe, pluralize } from "../utils";
+import Spacer from "./Spacer";
 
 interface ShoeCardProps {
   slug: string;

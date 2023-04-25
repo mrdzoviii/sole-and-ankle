@@ -1,12 +1,12 @@
 import styled from "styled-components/macro";
 
-import { WEIGHTS } from "../../constants";
+import { WEIGHTS } from "../constants";
 
-import Breadcrumbs from "../Breadcrumbs";
-import Select from "../Select";
-import ShoeGrid from "../ShoeGrid";
-import ShoeSidebar from "../ShoeSidebar";
-import Spacer from "../Spacer";
+import Breadcrumbs from "./Breadcrumbs";
+import Select from "./Select";
+import ShoeGrid from "./ShoeGrid";
+import ShoeSidebar from "./ShoeSidebar";
+import Spacer from "./Spacer";
 
 interface ShoeIndexProps {
   sortId: string;
