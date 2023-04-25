@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled, { CSSProperties } from "styled-components/macro";
 
 import { COLORS, WEIGHTS } from "../constants";
 import { formatPrice, isNewShoe, pluralize } from "../utils";
@@ -45,11 +45,23 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
+          {variant === "on-sale" ? <SaleTag>Sale</SaleTag> : null}
+          {variant === "new-release" ? <NewTag>Just Released!</NewTag> : null}
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price onSale={variant === "on-sale"}>{formatPrice(price)}</Price>
+          <Price
+            style={
+              {
+                "--color": variant === "on-sale" ? COLORS.gray[700] : "inherit",
+                "--text-decoration":
+                  variant === "on-sale" ? "line-through" : "none",
+              } as CSSProperties
+            }
+          >
+            {formatPrice(price)}
+          </Price>
         </Row>
         <Row>
           <ColorInfo>{pluralize("Color", numOfColors)}</ColorInfo>
@@ -57,11 +69,6 @@ const ShoeCard = ({
             <SalePrice>{formatPrice(salePrice)}</SalePrice>
           ) : null}
         </Row>
-        {variant !== "default" ? (
-          <Tag variant={variant}>
-            {variant === "new-release" ? "Just released!" : "Sale"}
-          </Tag>
-        ) : null}
       </Wrapper>
     </Link>
   );
@@ -72,30 +79,35 @@ const Link = styled.a`
   color: inherit;
 `;
 
-const Tag = styled.div<{ variant: "on-sale" | "new-release" }>`
+const Tag = styled.div`
   position: absolute;
   top: 12px;
   right: -4px;
-  background-color: ${(p) =>
-    p.variant === "on-sale" ? COLORS.primary : COLORS.secondary};
   color: ${COLORS.white};
-  padding: 8px 10px;
+  padding: 0 10px;
+  line-height: 32px;
+  height: 32px;
   border-radius: 2px;
-  font-size: 0.875rem;
+  font-size: ${14 / 16}rem;
   font-weight: ${WEIGHTS.bold};
 `;
 
-const Wrapper = styled.article`
-  position: relative;
+const SaleTag = styled(Tag)`
+  background-color: ${COLORS.primary};
 `;
+
+const NewTag = styled(Tag)`
+  background-color: ${COLORS.secondary};
+`;
+
+const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
   position: relative;
-  border-radius: 16px 16px 4px 4px;
-  overflow: clip;
 `;
 
 const Image = styled.img`
+  border-radius: 16px 16px 4px 4px;
   width: 100%;
 `;
 
@@ -110,9 +122,9 @@ const Name = styled.h3`
   color: ${COLORS.gray[900]};
 `;
 
-const Price = styled.span<{ onSale: boolean }>`
-  color: ${(p) => (p.onSale ? COLORS.gray[700] : "inherit")};
-  text-decoration: ${(p) => (p.onSale ? "line-through" : "inherit")};
+const Price = styled.span`
+  color: var(--color);
+  text-decoration: var(--text-decoration);
 `;
 
 const ColorInfo = styled.p`
